@@ -1,6 +1,6 @@
 import requests
 
-BASE_URL = "http://127.0.0.1:8080"
+BASE_URL = "https://ai-resume-analyzer-backend-zo1q.onrender.com"
 
 
 def api_signup(name, email, password):
