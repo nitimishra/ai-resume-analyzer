@@ -11,8 +11,10 @@ def create_database():
 
     os.makedirs("data", exist_ok=True)
 
-    conn = sqlite3.connect(DATABASE)
+    conn = sqlite3.connect(DATABASE, timeout=10)
     cursor = conn.cursor()
+
+    cursor.execute("PRAGMA journal_mode=WAL")
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
@@ -36,7 +38,7 @@ def register_user(name, email, password):
     )
 
     try:
-        conn = sqlite3.connect(DATABASE)
+        conn = sqlite3.connect(DATABASE, timeout=10)
         cursor = conn.cursor()
 
         cursor.execute(
@@ -62,7 +64,7 @@ def register_user(name, email, password):
 def login_user(email, password):
     """Verify user login credentials."""
 
-    conn = sqlite3.connect(DATABASE)
+    conn = sqlite3.connect(DATABASE, timeout=10)
     cursor = conn.cursor()
 
     cursor.execute(
