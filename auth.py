@@ -173,10 +173,6 @@ def show_auth_page():
                         name,
                         email,
                         password
-                    )(
-                        name,
-                        email,
-                        password
                     )
 
                     if success:
